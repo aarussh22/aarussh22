@@ -1,0 +1,10 @@
+{
+  "name": "chess-clock-commits",
+  "type": "module",
+  "scripts": {
+    "build": "node update-chess-clock.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}

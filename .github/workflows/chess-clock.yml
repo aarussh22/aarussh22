@@ -1,0 +1,41 @@
+name: ♟️ Chess Clock Commits
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  chess-clock:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Chess Clock Logic
+        run: npm run build
+        env:
+          GITHUB_USERNAME: aarussh22
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Git identity
+        run: |
+          git config --global user.name "Chess Clock Bot"
+          git config --global user.email "clock@chess.com"
+
+      - name: Commit updated clock + log
+        run: |
+          git add .chess-clock.json auto_commit_log.txt
+          git commit -m "♟️ Chess Clock Tick"
+          git push
