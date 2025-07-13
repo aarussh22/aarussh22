@@ -5,6 +5,7 @@ const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const CLOCK_FILE = '.chess-clock.json';
 const STATUS_FILE = 'CLOCK_STATUS.md';
+const README_FILE = 'README.md';
 
 const DAY_MINUTES = {
   ACTIVE: 5,
@@ -61,11 +62,11 @@ const updateClock = async () => {
     message = `⏳ No move made yesterday. Idle penalty: ${tick} mins. ${clock.minutesLeft} mins remain.`;
   }
 
-  // Write log
+  // Save clock state and log
   fs.writeFileSync(CLOCK_FILE, JSON.stringify(clock, null, 2));
   fs.writeFileSync('auto_commit_log.txt', message);
 
-  // Write Markdown dashboard
+  // Dashboard markdown
   const bar = generateProgressBar(clock.minutesLeft);
 
   const mdStatus = `
@@ -81,7 +82,16 @@ const updateClock = async () => {
 _Updated automatically via [Chess Clock GitHub Action](https://github.com/${GITHUB_USERNAME}/${GITHUB_USERNAME}/actions)_
   `.trim();
 
-  fs.writeFileSync(STATUS_FILE, mdStatus);
-};
+  // Inject dashboard into README
+  if (fs.existsSync(README_FILE)) {
+    const readme = fs.readFileSync(README_FILE, 'utf-8');
+    const startTag = '<!-- START_clock -->';
+    const endTag = '<!-- END_clock -->';
 
-updateClock();
+    const newSection = `${startTag}\n\n${mdStatus}\n\n${endTag}`;
+    const updated = readme.replace(
+      new RegExp(`${startTag}[\\s\\S]*?${endTag}`, 'gm'),
+      newSection
+    );
+
+    fs.writeFileSync(R

@@ -4,19 +4,17 @@
 <!-- Chess Clock Dashboard -->
 [⬇️ View Live Status](./CLOCK_STATUS.md)
 
-<!-- Optionally embed it directly: -->
-<details>
-<summary>♟️ Chess Clock Commit Status</summary>
 
 <!-- START_clock -->
 <!-- CLOCK_STATUS.md will be inserted here by GitHub's markdown renderer -->
 <!-- END_clock -->
 
-<summary>View current clock status</summary>
-
-<!-- Static snapshot: updated daily -->
-
-![chess clock](./CLOCK_STATUS.md)
-
 </details>
 
+## ♟️ Chess Clock Dashboard
+
+<!-- START_clock -->
+
+_Chess Clock will appear here after first run._
+
+<!-- END_clock -->
