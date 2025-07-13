@@ -1,14 +1,12 @@
 ## Hi there 👋
 
 
-### ♟️ Watch the Chess Pieces Move Through My Contribution Grid
+### ♟️ Animated Chess Contributions
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aarussh22/aarussh22/output/github-contribution-grid-dark.svg" />
-    <img alt="Chess-style GitHub contribution animation" src="https://raw.githubusercontent.com/aarussh22/aarussh22/output/github-contribution-grid.svg" />
-  </picture>
+  <img src="https://raw.githubusercontent.com/aarussh22/aarussh22/output/chess.svg" alt="Chess animation" />
 </p>
+
 
 <!--
 **aarussh22/aarussh22** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
