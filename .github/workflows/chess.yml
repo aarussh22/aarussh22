@@ -1,9 +1,8 @@
-
-name: Generate Chess Contribution Animation
+name: ♟️ Generate Chess Contribution Animation
 
 on:
   schedule:
-    - cron: "0 0 * * *" # runs daily at midnight
+    - cron: "0 0 * * *"  # every day
   workflow_dispatch:
 
 jobs:
@@ -11,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
       - name: Generate Chess-style SVG
         uses: Platane/snk@v3
         with:
@@ -18,9 +18,8 @@ jobs:
           outputs: |
             dist/github-contribution-grid.svg
             dist/github-contribution-grid-dark.svg
-          # Add customization for chess-like behavior here (after forking)
-          
-      - name: Push to the output branch
+
+      - name: Push generated SVG to output branch
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: output
