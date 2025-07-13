@@ -36,6 +36,6 @@ jobs:
 
       - name: Commit updated clock + log
         run: |
-          git add .chess-clock.json auto_commit_log.txt
+          git add .chess-clock.json auto_commit_log.txt CLOCK_STATUS.md
           git commit -m "♟️ Chess Clock Tick"
           git push

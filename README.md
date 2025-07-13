@@ -12,5 +12,11 @@
 <!-- CLOCK_STATUS.md will be inserted here by GitHub's markdown renderer -->
 <!-- END_clock -->
 
+<summary>View current clock status</summary>
+
+<!-- Static snapshot: updated daily -->
+
+![chess clock](./CLOCK_STATUS.md)
+
 </details>
 

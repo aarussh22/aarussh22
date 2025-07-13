@@ -1,5 +1,4 @@
 {
-  "name": "chess-clock-commits",
   "type": "module",
   "scripts": {
     "build": "node update-chess-clock.js"
