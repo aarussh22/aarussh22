@@ -1,5 +1,9 @@
 ## Hi there 👋
 
+
+### ♟️ Watch the chess pieces take over my contribution board!
+![Chess Contribution Animation](https://raw.githubusercontent.com/aarussh22/aarussh22/output/github-contribution-grid.svg)
+
 <!--
 **aarussh22/aarussh22** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
