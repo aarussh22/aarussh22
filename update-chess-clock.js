@@ -94,4 +94,11 @@ _Updated automatically via [Chess Clock GitHub Action](https://github.com/${GITH
       newSection
     );
 
-    fs.writeFileSync(R
+    fs.writeFileSync(README_FILE, updated);
+  }
+
+  // Also save as standalone file (optional)
+  fs.writeFileSync(STATUS_FILE, mdStatus);
+};
+
+updateClock();
