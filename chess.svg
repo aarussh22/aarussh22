@@ -1,0 +1,43 @@
+<svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    text {
+      font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    }
+  </style>
+  
+<g transform="translate(80, 920)">
+  <text font-size="16" opacity="0.9">♙</text>
+  <animateTransform
+    attributeName="transform"
+    type="translate"
+    values="80,920; 84,922; 80,920"
+    dur="3s"
+    repeatCount="indefinite"
+  />
+</g>
+
+
+<g transform="translate(0, 980)">
+  <text font-size="16" opacity="0.9">♖</text>
+  <animateTransform
+    attributeName="transform"
+    type="translate"
+    values="0,980; 12,974; 0,980"
+    dur="3s"
+    repeatCount="indefinite"
+  />
+</g>
+
+
+<g transform="translate(0, 1040)">
+  <text font-size="16" opacity="0.9">♔</text>
+  <animateTransform
+    attributeName="transform"
+    type="translate"
+    values="0,1040; 60,1070; 0,1040"
+    dur="3s"
+    repeatCount="indefinite"
+  />
+</g>
+
+</svg>
