@@ -26,7 +26,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: your-github-username
+          GITHUB_USERNAME: aarussh22
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v3
