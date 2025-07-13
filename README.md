@@ -1,24 +1,16 @@
-## Hi there 👋
+## HELLO!
 
 
-### ♟️ Animated Chess Contributions
+<!-- Chess Clock Dashboard -->
+[⬇️ View Live Status](./CLOCK_STATUS.md)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/aarussh22/aarussh22/output/chess.svg" alt="Chess animation" />
-</p>
+<!-- Optionally embed it directly: -->
+<details>
+<summary>♟️ Chess Clock Commit Status</summary>
 
+<!-- START_clock -->
+<!-- CLOCK_STATUS.md will be inserted here by GitHub's markdown renderer -->
+<!-- END_clock -->
 
-<!--
-**aarussh22/aarussh22** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+</details>
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
