@@ -6,7 +6,7 @@ import fs from 'fs'
 
 // Main function
 async function run() {
-  const username = process.env.GITHUB_USERNAME || 'your-github-username'
+  const username = process.env.aarussh22 || 'aarussh22'
   const contributionData = await getContributionData(username)
   const movements = mapToChessMoves(contributionData)
   const svg = generateSVG(movements)
