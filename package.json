@@ -1,1 +1,11 @@
+{
+  "name": "chess-github-animation",
+  "type": "module",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "scripts": {
+    "build": "node generate-chess-svg.js"
+  }
+}
 
