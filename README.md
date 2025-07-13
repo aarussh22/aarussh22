@@ -18,3 +18,11 @@
 _Chess Clock will appear here after first run._
 
 <!-- END_clock -->
+
+
+## ♟️ GitHub Commit Chessboard
+
+![Chessboard](./chessboard-visual/chessboard.svg)
+
+
+_One square forward per commit. Miss a move on the last square? Reset._

@@ -1,0 +1,7 @@
+{
+  "currentPawnIndex": 0,
+  "positions": [0, 0, 0, 0, 0, 0, 0, 0],
+  "queens": [false, false, false, false, false, false, false, false],
+  "lastCheckedDate": "2025-07-12",
+  "boardsCompleted": 0
+}

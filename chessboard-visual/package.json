@@ -1,7 +1,8 @@
 {
+  "name": "chessboard-visual",
   "type": "module",
   "scripts": {
-    "build": "node update-chess-clock.js"
+    "build": "node chess-progress.js"
   },
   "dependencies": {
     "node-fetch": "^3.3.2"

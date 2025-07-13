@@ -1,19 +1,19 @@
-name: ⏳ Chess Clock Tick
+name: ♟️ GitHub Chessboard Tracker
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Every day at midnight UTC
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  tick:
+  chessboard:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Set up Node
@@ -22,18 +22,18 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: cd chess-clock && npm install
+        run: cd chessboard-visual && npm install
 
-      - name: Run chess clock logic
-        run: cd chess-clock && npm run build
+      - name: Run chess animation script
+        run: cd chessboard-visual && npm run build
         env:
           GITHUB_USERNAME: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit update
+      - name: Commit SVG board
         run: |
           git config --global user.email "bot@github.com"
-          git config --global user.name "ChessClock Bot"
-          git add chess-clock/
-          git commit -m "⏳ Clock tick update"
+          git config --global user.name "ChessBoard Bot"
+          git add chessboard-visual/
+          git commit -m "♟️ Update chessboard.svg"
           git push
