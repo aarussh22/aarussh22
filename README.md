@@ -1,5 +1,8 @@
 ## Welcome to Aarush's Chess World 
 
+Aspiring Data analyst, with lucid chess addiction. 
+
+Querying my own games in SQL to find the patterns behind my every blunder and setting the board on fire
 
 <p align="center">
   <img src="./chess/board.svg" width="100%" alt="Commit Chess: a chessboard where each day of GitHub activity moves a pawn toward promotion, guarded by a chess clock" />
