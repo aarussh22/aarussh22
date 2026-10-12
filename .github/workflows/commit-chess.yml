@@ -1,0 +1,42 @@
+name: ♟️ Commit Chess
+
+on:
+  schedule:
+    - cron: "17 */6 * * *" # four times a day, so today's moves show up quickly
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [chess/generate.mjs, .github/workflows/commit-chess.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: commit-chess
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Render board
+        run: node chess/generate.mjs
+        env:
+          GITHUB_USERNAME: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit if changed
+        run: |
+          git diff --quiet chess/board.svg && { echo "Board unchanged."; exit 0; }
+          # Bot identity, so these commits never count on the contribution graph.
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add chess/board.svg
+          git commit -m "♟️ Update Commit Chess board"
+          git push

@@ -1,0 +1,253 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="440" viewBox="0 0 860 440" role="img" aria-labelledby="t d">
+<title id="t">Commit Chess — aarussh22</title>
+<desc id="d">Pawn e2 is 6 moves from promotion · 0/8 queens · promote them all before the flag falls Clock: 60 minutes. Boards won: 0. Flags fallen: 0. Day streak: 0.</desc>
+<style>
+  :root { --bg:#ffffff; --border:#d0d7de; --fg:#1f2328; --muted:#656d76; --tile:#f6f8fa; --track:#eaeef2; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0d1117; --border:#30363d; --fg:#e6edf3; --muted:#8d96a0; --tile:#161b22; --track:#21262d; } }
+  text { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif; fill:var(--fg); }
+  .card { fill:var(--bg); stroke:var(--border); }
+  .title { font-size:22px; font-weight:700; }
+  .body { font-size:13px; }
+  .muted { fill:var(--muted); }
+  .xs { font-size:11px; }
+  .lt { fill:#f0d9b5; } .dk { fill:#b58863; }
+  .coord { font-size:9px; font-weight:700; }
+  .on-lt { fill:#b58863; } .on-dk { fill:#f0d9b5; }
+  .hl { fill:#f6e05e; opacity:.5; }
+  .hint { fill:#1f2328; }
+  .pc { fill:#fbf8f1; stroke:#1f2328; stroke-width:1.6; stroke-linejoin:round; }
+  .pc.sm { stroke-width:2; }
+  .ghost { fill:var(--muted); opacity:.22; }
+  .eye { fill:#1f2328; stroke:none; }
+  .cut { fill:none; stroke:#1f2328; stroke-width:1.4; stroke-linecap:round; }
+  .burst { fill:none; stroke:#f2b705; stroke-width:3; }
+  .banner { fill:#1f2328; opacity:.88; } .banner-t { fill:#f2b705; font-size:18px; font-weight:700; }
+  .track { fill:none; stroke:var(--track); stroke-width:10; }
+  .arc { fill:none; stroke:#3fb950; stroke-width:10; stroke-linecap:round; }
+  .arc.low { stroke:#f85149; }
+  .tick { stroke:var(--muted); stroke-width:2; stroke-linecap:round; }
+  .bead { fill:#f2b705; stroke:var(--bg); stroke-width:1.5; }
+  .digits { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:30px; font-weight:700; }
+  .tile { fill:var(--tile); stroke:var(--border); }
+  .stat { font-size:24px; font-weight:700; } .stat.hot { fill:#f0883e; }
+  .empty { fill:#1f2328; opacity:.25; }
+  .today { fill:none; stroke:#f2b705; stroke-width:2; stroke-dasharray:4 3; }
+</style>
+<defs><symbol id="pawn" viewBox="0 0 40 40"><circle cx="20" cy="11.5" r="5.6"/><path d="M14 33c0-5.6 2.6-8.8 4.6-11.2h-3v-3h8.8v3h-3c2 2.4 4.6 5.6 4.6 11.2z"/><rect x="10" y="32.5" width="20" height="4.5" rx="1.6"/></symbol><symbol id="knight" viewBox="0 0 40 40"><path d="M13 33c-.4-4.4 1.4-7.6 4.6-10.6.9-.9 1.5-2 1.6-3.1-1.7 1.4-3.6 2.1-5.6 2.4-1.7.3-3.3-.4-3.9-1.8-.6-1.4.2-2.6 1.4-3.6 1.8-1.5 3.1-3.6 4-5.8l-.3-3.6 2.7 2.1 1.4-2.8 1.4 3.3c5.2 1.6 8.6 6.4 8.6 14.1V33z"/><circle cx="18.4" cy="11.6" r="1.1" class="eye"/><rect x="10" y="32.5" width="20" height="4.5" rx="1.6"/></symbol><symbol id="bishop" viewBox="0 0 40 40"><circle cx="20" cy="6.6" r="2.4"/><path d="M20 8.8c-3.9 2.6-6.2 6-6.2 9.2 0 2.8 1.8 4.4 3.6 5h5.2c1.8-.6 3.6-2.2 3.6-5 0-3.2-2.3-6.6-6.2-9.2z"/><path d="M15.4 23h9.2v2.8h-9.2zM15 33c.8-3.2 2-5.4 2.6-7.2h4.8c.6 1.8 1.8 4 2.6 7.2z"/><path d="M21.6 12.6l-3.4 3.4" class="cut"/><rect x="10" y="32.5" width="20" height="4.5" rx="1.6"/></symbol><symbol id="rook" viewBox="0 0 40 40"><path d="M11.5 17.5V9.6h3.6v3h2.9v-3h4v3h2.9v-3h3.6v7.9z"/><path d="M13.2 33l1.6-15.5h10.4L26.8 33z"/><rect x="10" y="32.5" width="20" height="4.5" rx="1.6"/></symbol><symbol id="queen" viewBox="0 0 40 40"><path d="M12 33 9 14.4l5.2 9L15.4 10l3 12.4L20 8.4l1.6 14L24.6 10l1.2 13.4 5.2-9L28 33z"/><circle cx="9" cy="13.4" r="2.2"/><circle cx="15.4" cy="9" r="2.2"/><circle cx="20" cy="7.2" r="2.2"/><circle cx="24.6" cy="9" r="2.2"/><circle cx="31" cy="13.4" r="2.2"/><rect x="10" y="32.5" width="20" height="4.5" rx="1.6"/></symbol><symbol id="king" viewBox="0 0 40 40"><path d="M19 3.4h2v3.2h3v2h-3v4.2h-2V8.6h-3v-2h3z"/><path d="M12.4 33c-2.6-6.2-4.4-12.4-.4-14.6 3.4-1.8 6.4 1 8 3.4 1.6-2.4 4.6-5.2 8-3.4 4 2.2 2.2 8.4-.4 14.6z"/><path d="M13.6 27h12.8" class="cut"/><rect x="10" y="32.5" width="20" height="4.5" rx="1.6"/></symbol>
+  <radialGradient id="glow"><stop offset="0" stop-color="#ffd84d"/><stop offset="1" stop-color="#ffd84d" stop-opacity="0"/></radialGradient>
+</defs>
+<rect x=".5" y=".5" width="859" height="439" rx="16" class="card"/>
+<use href="#pawn" x="24" y="20" width="36" height="36" class="pc"/>
+<text x="64" y="46" class="title">Commit Chess</text>
+<text x="832" y="46" text-anchor="end" class="muted xs">@aarussh22 · updated Oct 12</text>
+<text x="28" y="74" class="muted body">Pawn e2 is 6 moves from promotion · 0/8 queens · promote them all before the flag falls</text>
+<rect x="24" y="88" width="328" height="328" rx="6" fill="#7a5a3a"/>
+<rect x="28" y="372" width="40" height="40" class="dk"/>
+<rect x="68" y="372" width="40" height="40" class="lt"/>
+<rect x="108" y="372" width="40" height="40" class="dk"/>
+<rect x="148" y="372" width="40" height="40" class="lt"/>
+<rect x="188" y="372" width="40" height="40" class="dk"/>
+<rect x="228" y="372" width="40" height="40" class="lt"/>
+<rect x="268" y="372" width="40" height="40" class="dk"/>
+<rect x="308" y="372" width="40" height="40" class="lt"/>
+<rect x="28" y="332" width="40" height="40" class="lt"/>
+<rect x="68" y="332" width="40" height="40" class="dk"/>
+<rect x="108" y="332" width="40" height="40" class="lt"/>
+<rect x="148" y="332" width="40" height="40" class="dk"/>
+<rect x="188" y="332" width="40" height="40" class="lt"/>
+<rect x="228" y="332" width="40" height="40" class="dk"/>
+<rect x="268" y="332" width="40" height="40" class="lt"/>
+<rect x="308" y="332" width="40" height="40" class="dk"/>
+<rect x="28" y="292" width="40" height="40" class="dk"/>
+<rect x="68" y="292" width="40" height="40" class="lt"/>
+<rect x="108" y="292" width="40" height="40" class="dk"/>
+<rect x="148" y="292" width="40" height="40" class="lt"/>
+<rect x="188" y="292" width="40" height="40" class="dk"/>
+<rect x="228" y="292" width="40" height="40" class="lt"/>
+<rect x="268" y="292" width="40" height="40" class="dk"/>
+<rect x="308" y="292" width="40" height="40" class="lt"/>
+<rect x="28" y="252" width="40" height="40" class="lt"/>
+<rect x="68" y="252" width="40" height="40" class="dk"/>
+<rect x="108" y="252" width="40" height="40" class="lt"/>
+<rect x="148" y="252" width="40" height="40" class="dk"/>
+<rect x="188" y="252" width="40" height="40" class="lt"/>
+<rect x="228" y="252" width="40" height="40" class="dk"/>
+<rect x="268" y="252" width="40" height="40" class="lt"/>
+<rect x="308" y="252" width="40" height="40" class="dk"/>
+<rect x="28" y="212" width="40" height="40" class="dk"/>
+<rect x="68" y="212" width="40" height="40" class="lt"/>
+<rect x="108" y="212" width="40" height="40" class="dk"/>
+<rect x="148" y="212" width="40" height="40" class="lt"/>
+<rect x="188" y="212" width="40" height="40" class="dk"/>
+<rect x="228" y="212" width="40" height="40" class="lt"/>
+<rect x="268" y="212" width="40" height="40" class="dk"/>
+<rect x="308" y="212" width="40" height="40" class="lt"/>
+<rect x="28" y="172" width="40" height="40" class="lt"/>
+<rect x="68" y="172" width="40" height="40" class="dk"/>
+<rect x="108" y="172" width="40" height="40" class="lt"/>
+<rect x="148" y="172" width="40" height="40" class="dk"/>
+<rect x="188" y="172" width="40" height="40" class="lt"/>
+<rect x="228" y="172" width="40" height="40" class="dk"/>
+<rect x="268" y="172" width="40" height="40" class="lt"/>
+<rect x="308" y="172" width="40" height="40" class="dk"/>
+<rect x="28" y="132" width="40" height="40" class="dk"/>
+<rect x="68" y="132" width="40" height="40" class="lt"/>
+<rect x="108" y="132" width="40" height="40" class="dk"/>
+<rect x="148" y="132" width="40" height="40" class="lt"/>
+<rect x="188" y="132" width="40" height="40" class="dk"/>
+<rect x="228" y="132" width="40" height="40" class="lt"/>
+<rect x="268" y="132" width="40" height="40" class="dk"/>
+<rect x="308" y="132" width="40" height="40" class="lt"/>
+<rect x="28" y="92" width="40" height="40" class="lt"/>
+<rect x="68" y="92" width="40" height="40" class="dk"/>
+<rect x="108" y="92" width="40" height="40" class="lt"/>
+<rect x="148" y="92" width="40" height="40" class="dk"/>
+<rect x="188" y="92" width="40" height="40" class="lt"/>
+<rect x="228" y="92" width="40" height="40" class="dk"/>
+<rect x="268" y="92" width="40" height="40" class="lt"/>
+<rect x="308" y="92" width="40" height="40" class="dk"/>
+<text x="65" y="409" class="coord on-dk" text-anchor="end">a</text>
+<text x="105" y="409" class="coord on-lt" text-anchor="end">b</text>
+<text x="145" y="409" class="coord on-dk" text-anchor="end">c</text>
+<text x="185" y="409" class="coord on-lt" text-anchor="end">d</text>
+<text x="225" y="409" class="coord on-dk" text-anchor="end">e</text>
+<text x="265" y="409" class="coord on-lt" text-anchor="end">f</text>
+<text x="305" y="409" class="coord on-dk" text-anchor="end">g</text>
+<text x="345" y="409" class="coord on-lt" text-anchor="end">h</text>
+<text x="31" y="382" class="coord on-dk">1</text>
+<text x="31" y="342" class="coord on-lt">2</text>
+<text x="31" y="302" class="coord on-dk">3</text>
+<text x="31" y="262" class="coord on-lt">4</text>
+<text x="31" y="222" class="coord on-dk">5</text>
+<text x="31" y="182" class="coord on-lt">6</text>
+<text x="31" y="142" class="coord on-dk">7</text>
+<text x="31" y="102" class="coord on-lt">8</text>
+<circle cx="208" cy="312" r="6" class="hint">
+      <animate attributeName="r" values="5;8;5" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".35;.7;.35" dur="1.8s" repeatCount="indefinite"/></circle>
+<use href="#pawn" x="28" y="332" width="40" height="40" class="pc"/>
+<use href="#pawn" x="68" y="332" width="40" height="40" class="pc"/>
+<use href="#pawn" x="108" y="332" width="40" height="40" class="pc"/>
+<use href="#pawn" x="148" y="332" width="40" height="40" class="pc"/>
+<use href="#pawn" x="188" y="332" width="40" height="40" class="pc"/>
+<use href="#pawn" x="228" y="332" width="40" height="40" class="pc"/>
+<use href="#pawn" x="268" y="332" width="40" height="40" class="pc"/>
+<use href="#pawn" x="308" y="332" width="40" height="40" class="pc"/>
+<line x1="470.0" y1="121.0" x2="470.0" y2="115.0" class="tick"/>
+<line x1="502.5" y1="129.7" x2="504.0" y2="127.1" class="tick"/>
+<line x1="526.3" y1="153.5" x2="528.9" y2="152.0" class="tick"/>
+<line x1="535.0" y1="186.0" x2="541.0" y2="186.0" class="tick"/>
+<line x1="526.3" y1="218.5" x2="528.9" y2="220.0" class="tick"/>
+<line x1="502.5" y1="242.3" x2="504.0" y2="244.9" class="tick"/>
+<line x1="470.0" y1="251.0" x2="470.0" y2="257.0" class="tick"/>
+<line x1="437.5" y1="242.3" x2="436.0" y2="244.9" class="tick"/>
+<line x1="413.7" y1="218.5" x2="411.1" y2="220.0" class="tick"/>
+<line x1="405.0" y1="186.0" x2="399.0" y2="186.0" class="tick"/>
+<line x1="413.7" y1="153.5" x2="411.1" y2="152.0" class="tick"/>
+<line x1="437.5" y1="129.7" x2="436.0" y2="127.1" class="tick"/>
+<circle cx="470" cy="186" r="56" class="track"/>
+<circle cx="470" cy="186" r="56" class="arc" stroke-dasharray="351.86" stroke-dashoffset="0.00" transform="rotate(-90 470 186)">
+    <animate attributeName="stroke-dashoffset" values="0;0.00" dur="1.8s" calcMode="spline" keySplines=".3 0 .2 1" fill="freeze"/>
+    </circle>
+<g><animateTransform attributeName="transform" type="rotate" from="0 470 186" to="360 470 186" dur="6s" repeatCount="indefinite"/>
+    <circle cx="470" cy="130" r="3.2" class="bead"/></g>
+<text x="465" y="195" text-anchor="end" class="digits">60</text>
+    <text x="470" y="193" text-anchor="middle" class="digits">:<animate attributeName="opacity" values="1;1;.15;.15" keyTimes="0;.5;.5;1" dur="1s" repeatCount="indefinite"/></text>
+    <text x="475" y="195" class="digits">00</text>
+    <text x="470" y="214" text-anchor="middle" class="muted xs">on the clock</text>
+<text x="470" y="278" text-anchor="middle" class="muted xs">+3:00 active day · −10:00 idle day</text>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.25;1" dur="0.60s" fill="freeze"/>
+      <rect x="580" y="102" width="122" height="60" rx="10" class="tile"/>
+      <text x="592" y="124" class="muted xs">Boards won</text>
+      <text x="592" y="150" class="stat">0</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.35;1" dur="0.72s" fill="freeze"/>
+      <rect x="712" y="102" width="122" height="60" rx="10" class="tile"/>
+      <text x="724" y="124" class="muted xs">Flags fallen</text>
+      <text x="724" y="150" class="stat">0</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.45;1" dur="0.84s" fill="freeze"/>
+      <rect x="580" y="172" width="122" height="60" rx="10" class="tile"/>
+      <text x="592" y="194" class="muted xs">Day streak</text>
+      <text x="592" y="220" class="stat">0</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.55;1" dur="0.96s" fill="freeze"/>
+      <rect x="712" y="172" width="122" height="60" rx="10" class="tile"/>
+      <text x="724" y="194" class="muted xs">Moves played</text>
+      <text x="724" y="220" class="stat">0</text></g>
+<text x="580" y="262" class="body">Waiting for the first move…</text>
+<g transform="translate(580 272)"><use href="#queen" x="0" width="26" height="26" class="ghost"/><use href="#queen" x="31" width="26" height="26" class="ghost"/><use href="#queen" x="62" width="26" height="26" class="ghost"/><use href="#queen" x="93" width="26" height="26" class="ghost"/><use href="#queen" x="124" width="26" height="26" class="ghost"/><use href="#queen" x="155" width="26" height="26" class="ghost"/><use href="#queen" x="186" width="26" height="26" class="ghost"/><use href="#queen" x="217" width="26" height="26" class="ghost"/></g>
+<text x="382" y="332" class="muted xs">Last 14 days</text>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.00;1" dur="0.35s" fill="freeze"/>
+      <title>2026-09-29: 0 contributions</title>
+      <rect x="382" y="342" width="32" height="32" class="lt"/>
+<circle cx="398" cy="358" r="3" class="empty"/>
+<text x="398" y="387" text-anchor="middle" class="muted xs">T</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.14;1" dur="0.41s" fill="freeze"/>
+      <title>2026-09-30: 0 contributions</title>
+      <rect x="414" y="342" width="32" height="32" class="dk"/>
+<circle cx="430" cy="358" r="3" class="empty"/>
+<text x="430" y="387" text-anchor="middle" class="muted xs">W</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.25;1" dur="0.47s" fill="freeze"/>
+      <title>2026-10-01: 0 contributions</title>
+      <rect x="446" y="342" width="32" height="32" class="lt"/>
+<circle cx="462" cy="358" r="3" class="empty"/>
+<text x="462" y="387" text-anchor="middle" class="muted xs">T</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.33;1" dur="0.53s" fill="freeze"/>
+      <title>2026-10-02: 6 contributions</title>
+      <rect x="478" y="342" width="32" height="32" class="dk"/>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -7;0 0;0 0" keyTimes="0;.5;.56;.62;1" dur="6s" begin="0.21s" repeatCount="indefinite"/>
+        <use href="#bishop" x="480" y="344" width="28" height="28" class="pc"/></g>
+<text x="494" y="387" text-anchor="middle" class="muted xs">F</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.40;1" dur="0.59s" fill="freeze"/>
+      <title>2026-10-03: 0 contributions</title>
+      <rect x="510" y="342" width="32" height="32" class="lt"/>
+<circle cx="526" cy="358" r="3" class="empty"/>
+<text x="526" y="387" text-anchor="middle" class="muted xs">S</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.45;1" dur="0.65s" fill="freeze"/>
+      <title>2026-10-04: 0 contributions</title>
+      <rect x="542" y="342" width="32" height="32" class="dk"/>
+<circle cx="558" cy="358" r="3" class="empty"/>
+<text x="558" y="387" text-anchor="middle" class="muted xs">S</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.50;1" dur="0.71s" fill="freeze"/>
+      <title>2026-10-05: 0 contributions</title>
+      <rect x="574" y="342" width="32" height="32" class="lt"/>
+<circle cx="590" cy="358" r="3" class="empty"/>
+<text x="590" y="387" text-anchor="middle" class="muted xs">M</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.54;1" dur="0.77s" fill="freeze"/>
+      <title>2026-10-06: 0 contributions</title>
+      <rect x="606" y="342" width="32" height="32" class="dk"/>
+<circle cx="622" cy="358" r="3" class="empty"/>
+<text x="622" y="387" text-anchor="middle" class="muted xs">T</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.57;1" dur="0.83s" fill="freeze"/>
+      <title>2026-10-07: 0 contributions</title>
+      <rect x="638" y="342" width="32" height="32" class="lt"/>
+<circle cx="654" cy="358" r="3" class="empty"/>
+<text x="654" y="387" text-anchor="middle" class="muted xs">W</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.60;1" dur="0.89s" fill="freeze"/>
+      <title>2026-10-08: 0 contributions</title>
+      <rect x="670" y="342" width="32" height="32" class="dk"/>
+<circle cx="686" cy="358" r="3" class="empty"/>
+<text x="686" y="387" text-anchor="middle" class="muted xs">T</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.63;1" dur="0.95s" fill="freeze"/>
+      <title>2026-10-09: 0 contributions</title>
+      <rect x="702" y="342" width="32" height="32" class="lt"/>
+<circle cx="718" cy="358" r="3" class="empty"/>
+<text x="718" y="387" text-anchor="middle" class="muted xs">F</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.65;1" dur="1.01s" fill="freeze"/>
+      <title>2026-10-10: 0 contributions</title>
+      <rect x="734" y="342" width="32" height="32" class="dk"/>
+<circle cx="750" cy="358" r="3" class="empty"/>
+<text x="750" y="387" text-anchor="middle" class="muted xs">S</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.67;1" dur="1.07s" fill="freeze"/>
+      <title>2026-10-11: 1 contribution</title>
+      <rect x="766" y="342" width="32" height="32" class="lt"/>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -7;0 0;0 0" keyTimes="0;.5;.56;.62;1" dur="6s" begin="0.84s" repeatCount="indefinite"/>
+        <use href="#pawn" x="768" y="344" width="28" height="28" class="pc"/></g>
+<text x="782" y="387" text-anchor="middle" class="muted xs">S</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.68;1" dur="1.13s" fill="freeze"/>
+      <title>2026-10-12: 0 contributions</title>
+      <rect x="798" y="342" width="32" height="32" class="dk"/>
+<circle cx="814" cy="358" r="3" class="empty"/>
+<rect x="799" y="343" width="30" height="30" class="today"/>
+<text x="814" y="387" text-anchor="middle" class="muted xs">•</text></g>
+<g transform="translate(382 396)"><text x="8" y="14" text-anchor="end" class="muted xs">1</text><use href="#pawn" x="10" y="-1" width="20" height="20" class="pc sm"/><text x="60" y="14" text-anchor="end" class="muted xs">3</text><use href="#knight" x="62" y="-1" width="20" height="20" class="pc sm"/><text x="112" y="14" text-anchor="end" class="muted xs">5</text><use href="#bishop" x="114" y="-1" width="20" height="20" class="pc sm"/><text x="164" y="14" text-anchor="end" class="muted xs">7</text><use href="#rook" x="166" y="-1" width="20" height="20" class="pc sm"/><text x="216" y="14" text-anchor="end" class="muted xs">10</text><use href="#queen" x="218" y="-1" width="20" height="20" class="pc sm"/><text x="268" y="14" text-anchor="end" class="muted xs">15+</text><use href="#king" x="270" y="-1" width="20" height="20" class="pc sm"/>
+    <text x="316" y="14" class="muted xs">contributions</text></g>
+</svg>
