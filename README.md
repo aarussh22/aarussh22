@@ -1,4 +1,4 @@
-## HELLO!
+## Welcome to Aarush's Chess World 
 
 <p align="center">
   <img src="./chess/board.svg" width="100%" alt="Commit Chess: a chessboard where each day of GitHub activity moves a pawn toward promotion, guarded by a chess clock" />
