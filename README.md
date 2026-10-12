@@ -1,6 +1,7 @@
 ## Welcome to Aarush's Chess World 
 
 Aspiring Data analyst, with lucid chess addiction. 
+
 Querying my own games in SQL to find the patterns behind my every blunder and setting the board on fire
 
 <p align="center">
